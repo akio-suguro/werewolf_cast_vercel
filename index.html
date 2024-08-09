@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>人狼ゲーム配役</title>
+</head>
+<body>
+    <h1>人狼ゲーム 13人ア式配役</h1>
+
+    <form method="post">
+        <textarea name="players" rows="13" cols="50" placeholder="プレイヤー名を1行ごとに入力してください..."></textarea><br>
+        <input type="submit" value="配役を決定">
+    </form>
+
+    {% if result %}
+        <h2>配役結果</h2>
+        {% if result is string %}
+            <p>{{ result }}</p>
+        {% else %}
+            <ul>
+                {% for player, role in result.items() %}
+                    <li>{{ role }}: {{ player }}</li>
+                {% endfor %}
+            </ul>
+            <h3>初日のランダム占い白結果: {{ white_player }}</h3>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
